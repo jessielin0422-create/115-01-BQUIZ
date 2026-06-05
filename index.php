@@ -39,18 +39,20 @@
                </div>
                <!-- include -->
                <!-- 三個頁面需要有判斷 才知道要載入哪一個畫面-->
-               <!-- 如果都沒有的話 畫面會壞掉 所以設定手頁 -->
+               <!-- 如果都沒有的話 畫面會壞掉 所以設定首頁 -->
                <?php
-			include "front/main.php";
-			?>
+			
+               //$do=(!empty($_GET['do']))?$_GET['do']:"main";
+			//$do=(!isset($_GET['do']))?$_GET['do']:"main";  只限這裡判斷 用??取代
 
-               switch($do){
-               case "admin":
-               include "front/admin.php";
-               break;
-
-               }
-
+			$do=$_GET['do']??"main";
+			$file="front/$do.php";
+			if(file_exists($file)){
+				include $file;
+			}else{
+				include "front/main.php";
+			}
+               ?>
 
                <div id="alt"
                     style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
