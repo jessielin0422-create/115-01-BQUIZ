@@ -1,4 +1,5 @@
 <?php include_once "./api/db.php";?>
+
 <div class="di"
     style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
     <!--正中央-->
@@ -44,7 +45,9 @@
                         <td width="7%">
                             <input type="checkbox" name="del[]" value="<?= $title['id']; ?>">
                         </td>
-                        <td></td>
+                        <td>
+                         <input type="button" onclick="op('#cover','#cvr','include/<?= $do; ?>.php?id=<?= $title['id'];?>')" value="新增網站標題圖片">
+                        </td>
                         <input type="hidden" name="id[]" value="<?= $title['id']; ?>">
                     </tr>
                     <?php
