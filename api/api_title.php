@@ -15,3 +15,4 @@ to("../admin.php?do=title");
 
 <!-- mysql的新增中間連結 -->
 <!-- ../ 連線代表符號的意思 -->
+<!-- to("../admin.php?do=title"); 這一段是額外加的東西 -->
