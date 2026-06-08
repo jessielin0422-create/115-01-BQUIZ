@@ -39,7 +39,7 @@
                             <input type="text" name="text[]" value="<?= $title['text']; ?>">
                         </td>
                         <td width="7%">
-                            <input type="radio" name="sh" value="<?= $title['id']; ?>"  <?= ($title['sh']==1)?'checked':''; ?> >
+                            <input type="radio" name="sh" value="<?= $title['id']; ?>"  <?= ($title['sh']==1)?'checked':''; ?> > <!--建立radio ,checkbox 的勾選觀念--> 
                         </td>
                         <td width="7%">
                             <input type="checkbox" name="del[]" value="<?= $title['id']; ?>">

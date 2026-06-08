@@ -1,6 +1,29 @@
 <?php
 include_once "db.php";
 
+foreach($_POST['id'] as $idx => $id){
+     if(isset($_POST['del']) && in_array($id,$_POST['del'])){
+          $Title->del($id);
+     }else{
+
+      $row=$Title->find($id);
+        $row['text']=$_POST['text'][$idx];
+        $row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
+
+
+          $Title->save($row);
+     }
+
+}
+
+to("../admin.php?do=title");
+
+/* 已經要刪除的資料會再編輯嗎 正常不會? 
+反之 如果已知道要刪除的資料 那就先刪除就不需要再編輯
+
+*/
+?>
+
 
 /* 這是更新資料的程式*/ 
 /* if(!empty($_FILES['img']['tmp_name'])){
@@ -11,9 +34,7 @@ include_once "db.php";
      $Title->save($_POST);
 } */
 
-to("../admin.php?do=title");
 
-?>
 
 <!-- mysql的新增中間連結 -->
 <!-- ../ 連線代表符號的意思 -->
