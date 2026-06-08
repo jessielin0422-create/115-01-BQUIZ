@@ -1,7 +1,7 @@
 <?php
 
 class DB{
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db21";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db13";  /* db13 是自己設定的sql名稱 要對照清楚*/
     protected $pdo;
     protected $table;
 
@@ -115,6 +115,8 @@ function dd($array){
 function to($url){
     header("location:$url");
 }
+
+$Title=new DB('title');
 
 ?>
 
