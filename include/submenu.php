@@ -15,21 +15,21 @@
              foreach($row as $row):
         ?>
         <tr>
-            <td><input type="text" name="text[]" value="23"></td>
-            <td><input type="text" name="href[]" value="3"></td>
-            <td><input type="checkbox" name="del[]" value="="></td>
+            <td><input type="text" name="text[]" value=<?= $row['text']; ?>"></td>
+            <td><input type="text" name="href[]" value="=<?= $row['href']; ?>"></td>
+            <td><input type="checkbox" name="del[]" value=<?= $row['id']; ?>"></td>
+            <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
         </tr>
         <?php
         endforeach;
         endif;
         ?>
-
     </table>
     <div class="cent">
         <input type="hidden" name="main_id" value="<?= $_GET['id']; ?>">
         <input type="submit" value="修改確定">
         <input type="reset" value="重置">
-        <input type="reset" value="更多次選單" onclick="move()">
+        <input type="botton" value="更多次選單" onclick="move()">
     </div>
 </form>
 <script>
