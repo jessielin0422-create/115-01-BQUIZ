@@ -16,38 +16,32 @@
         </tbody>
     </table>
     <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-        <p class="t cent botli">最新消息資料管理</p>
-        <form method="post" action="./api/edit.php?table=<?= $do ?>">
+        <p class="t cent botli">管理者帳號管理</p>
+        <form method="post" action="./api/edit_ad.php">
             <table width="100%">
                 <tbody>
                     <tr class="yel">
-                        <td width="45%">最新消息資料內容</td>
-                        <td width="7%">顯示</td>
-                        <td width="7%">刪除</td>
+                        <td width="45%">帳號</td>
+                        <td width="45%">密碼</td>
+                        <td width="10%">刪除</td>
                     </tr>
                     <?php 
-                     $db = ${ucfirst($do)};
-                    $all = $db->count();
-                    $div = 4;
-                    $pages = ceil($all / $div);
-                    $now = $_GET['p'] ?? 1;
-                    $start = ($now - 1) * $div;
-
-                    $row = $db->all(" limit $start,$div");
-                    foreach ($row as $row):
+                    $db=${ucfirst($do)};
+                    $row=$db->all();
+                    foreach($row as $row):
                     ?>
                     
                     <tr>
-                        <td width="80%">
-                            <input type="text" name="text[]" value="<?= $ad['text']; ?>" style="width:95%">
+                        <td width="45%">
+                            <input type="text" name="acc[]" value="<?= $row['acc']; ?>" style="width:95%">
+                        </td>
+                        <td width="45%">
+                            <input type="password" name="pw[]" value="<?= $row['pw']; ?>"> 
                         </td>
                         <td width="10%">
-                            <input type="checkbox" name="sh[]" value="<?= $ad['id']; ?>"  <?= ($ad['sh']==1)?'checked':''; ?> >
+                            <input type="checkbox" name="del[]" value="<?= ['id']; ?>">
                         </td>
-                        <td width="10%">
-                            <input type="checkbox" name="del[]" value="<?= $ad['id']; ?>">
-                        </td>
-                        <input type="hidden" name="id[]" value="<?= $ad['id']; ?>">
+                        <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
                     </tr>
                     <?php
                     endforeach;
@@ -58,7 +52,7 @@
                 <tbody>
                     <tr>
                         <td width="200px">
-                            <input type="button" onclick="op('#cover','#cvr','include/<?= $do; ?>.php')" value="新增動態文字廣告">
+                            <input type="button" onclick="op('#cover','#cvr','include/<?= $do; ?>.php')" value="新增管理者帳號">
                         </td>
                         <td class="cent">
                             <input type="submit" value="修改確定">

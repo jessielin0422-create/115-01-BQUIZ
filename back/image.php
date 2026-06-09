@@ -1,4 +1,4 @@
-<?php include_once "./api/db.php";?>
+
 
 <div class="di"
     style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
@@ -17,48 +17,67 @@
         </tbody>
     </table>
     <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-        <p class="t cent botli">網站標題管理</p>
-        <form method="post" action="./api/edit_title.php">
+        <p class="t cent botli">校園映像資料管理</p>
+        <form method="post" action="./api/edit.php?table=<?= $do ?>">
             <table width="100%">
                 <tbody>
                     <tr class="yel">
-                        <td width="45%">動畫圖片</td>
-                        <td width="7%">顯示</td>
-                        <td width="7%">刪除</td>
+                        <td width="70%">校園映像資料</td>
+                        <td width="10%">顯示</td>
+                        <td width="10%">刪除</td>
                         <td></td>
                     </tr>
-                    <?php 
-                    $titles=$Mvim->all();
-                    foreach($titles as $Mvim):
+                    <?php
+                    $db = ${ucfirst($do)};
+                    $all = $db->count();
+                    $div = 3;
+                    $pages = ceil($all / $div);
+                    $now = $_GET['p'] ?? 1;
+                    $start = ($now - 1) * $div;
+
+                    $row = $db->all(" limit $start,$div");
+                    foreach ($row as $row):
                     ?>
-                    <tr>
-                        <td width="45%">
-                            <img src="./upload/<?= $title['img']; ?>" style="width:300px;height:30px">
-                        </td>
-                        <td width="23%">
-                            <input type="text" name="text[]" value="<?= $title['text']; ?>">
-                        </td>
-                        <td width="7%">
-                            <input type="radio" name="sh" value="<?= $title['id']; ?>"  <?= ($title['sh']==1)?'checked':''; ?> > <!--建立radio ,checkbox 的勾選觀念--> 
-                        </td>
-                        <td width="7%">
-                            <input type="checkbox" name="del[]" value="<?= $title['id']; ?>">
-                        </td>
-                        <td>
-                          <input type="button" value="更新圖片"  onclick="op('#cover','#cvr','include/update_<?= $do; ?>.php?id=<?= $Mvim['id'];?>')">
-                        </td>
-                        <input type="hidden" name="id[]" value="<?= $title['id']; ?>">
-                    </tr>
+                        <tr>
+                            <td>
+                                <img src="./upload/<?= $row['img']; ?>" style="width: 150px;height: 100px;px">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh']==1)?'checked':''; ?> >
+                            </td>
+                            <td>
+                                <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                            </td>
+                            <td>
+                                <input type="button" value="更新圖片" onclick="op('#cover','#cvr','include/update_<?= $do; ?>.php?id=<?= $row['id']; ?>')">
+                            </td>
+                            <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+                        </tr>
                     <?php
                     endforeach;
                     ?>
                 </tbody>
             </table>
+              <div class='cent'>
+                <?php
+                if($now-1 > 0){
+                    $prev=$now-1;
+                    echo "<a href='?do=$do&p=&prev'></a>";
+                }
+
+                for($i=1;$i<=$pages;$i++){
+                    $size=($i==$now)?'20px':'16px';
+                    echo ""
+                }
+                ?>
+
+              </div>
+
             <table style="margin-top:40px; width:70%;">
                 <tbody>
                     <tr>
                         <td width="200px">
-                            <input type="button" onclick="op('#cover','#cvr','include/<?= $do; ?>.php')" value="新增動畫圖片">
+                            <input type="button" onclick="op('#cover','#cvr','include/<?= $do; ?>.php')" value="新增校園映像資料">
                         </td>
                         <td class="cent">
                             <input type="submit" value="修改確定">

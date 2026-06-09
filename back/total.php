@@ -16,27 +16,22 @@
         </tbody>
     </table>
     <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-        <p class="t cent botli">最新消息資料管理</p>
-        <form method="post" action="./api/edit.php?table=<?= $do ?>">
+        <p class="t cent botli">進站總人數管理</p>
+        <form method="post" action="./api/edit_.php">
             <table width="100%">
                 <tbody>
                     <tr class="yel">
-                        <td width="45%">最新消息資料內容</td>
-                        <td width="7%">顯示</td>
-                        <td width="7%">刪除</td>
+                        <td width="50%">進站總人數</td>
+                        <td width="50%">
+                          <input type="number" name='total' value="">
+                        </td>
+                       
                     </tr>
                     <?php 
-                     $db = ${ucfirst($do)};
-                    $all = $db->count();
-                    $div = 4;
-                    $pages = ceil($all / $div);
-                    $now = $_GET['p'] ?? 1;
-                    $start = ($now - 1) * $div;
-
-                    $row = $db->all(" limit $start,$div");
-                    foreach ($row as $row):
+                    $ads=$Ad->all();
+                    foreach($ads as $ad):
                     ?>
-                    
+                    <!-- 修改Ad -->
                     <tr>
                         <td width="80%">
                             <input type="text" name="text[]" value="<?= $ad['text']; ?>" style="width:95%">
