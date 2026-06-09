@@ -1,0 +1,35 @@
+<h3 class="cent">編輯次選單</h3>
+<hr>
+<form action="api/submenu.php?table=menu" method="post" enctype="multipart/form-data">
+    <table class="all" style="width:70%; margin:auto;" id="subMenu">
+        <tr>
+            <td class="tt">次選單名稱：</td>
+            <td class="tt">次選單連結網址：</td>
+            <td class="tt">刪除：</td>
+
+        </tr>
+        <tr>
+            <td><input type="text" name="text[]"></td>
+            <td><input type="text" name="href[]"></td>
+            <td><input type="checkbox" name="del[]"></td>
+        </tr>
+
+    </table>
+    <div class="cent">
+        <input type="hidden" name="main_id" value="<?= $_GET['id']; ?>">
+        <input type="submit" value="修改確定">
+        <input type="reset" value="重置">
+        <input type="reset" value="更多次選單" onclick="move()">
+    </div>
+</form>
+<script>
+    function move(){
+        let row=`<tr>
+                    <td><input type="text" name="text[]"></td>
+                    <td><input type="text" name="href[]"></td>
+                    <td></td>
+               </tr>`
+
+        $("subMenu").append(row)
+    }
+    </script>

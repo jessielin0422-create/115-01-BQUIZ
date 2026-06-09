@@ -1,5 +1,7 @@
 <?php
 include_once "db.php";
 
-$Total
+$Total->save($_POST);
+
+to("../admin.php?do=total");
 ?>
