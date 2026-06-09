@@ -6,11 +6,10 @@
             <td class="tt">次選單名稱：</td>
             <td class="tt">次選單連結網址：</td>
             <td class="tt">刪除：</td>
-
         </tr>
         <tr>
-            <td><input type="text" name="text[]"></td>
-            <td><input type="text" name="href[]"></td>
+            <td><input type="text" name="text[]" value="23"></td>
+            <td><input type="text" name="href[]" value="3"></td>
             <td><input type="checkbox" name="del[]"></td>
         </tr>
 
