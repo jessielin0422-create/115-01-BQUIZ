@@ -1,4 +1,3 @@
-
 <div class="di"
     style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
     <!--正中央-->
@@ -16,36 +15,29 @@
         </tbody>
     </table>
     <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-        <p class="t cent botli">選單管理</p>
-        <form method="post" action="./api/edit_ad.php">
+        <p class="t cent botli">管理者帳號管理</p>
+        <form method="post" action="./api/edit.php?table=<?= $do ?>">
             <table width="100%">
                 <tbody>
                     <tr class="yel">
-                        <td width="45%">主選單名稱</td>
-                        <td width="45%">選單連結網址</td>
-                        <td width="10%">次選單數</td>
-                        <td width="10%">顯示</td>
+                        <td width="45%">帳號</td>
+                        <td width="45%">密碼</td>
                         <td width="10%">刪除</td>
-                        <td width="23%">
-                            <input type="text" name="text[]" value="<?= $title['text']; ?>">
-                        </td>
                     </tr>
                     <?php 
                     $db=${ucfirst($do)};
-                    $row=$db->all();
-                    foreach($row as $row):
+                    $rows=$db->all();
+                    foreach($rows as $row):
                     ?>
-                    
                     <tr>
                         <td width="45%">
                             <input type="text" name="acc[]" value="<?= $row['acc']; ?>" style="width:95%">
                         </td>
                         <td width="45%">
-                            <input type="password" name="pw[]" value="<?= $row['pw']; ?>"> 
+                            <input type="password" name="pw[]" value="<?= $row['pw']; ?>">
                         </td>
-
                         <td width="10%">
-                            <input type="checkbox" name="del[]" value="<?= ['id']; ?>">
+                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
                         <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
                     </tr>

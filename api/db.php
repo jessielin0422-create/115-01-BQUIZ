@@ -1,7 +1,7 @@
 <?php
 
 class DB{
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db13";  /* db13 是自己設定的sql名稱 要對照清楚*/
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db21";
     protected $pdo;
     protected $table;
 
@@ -72,7 +72,7 @@ class DB{
             $keys=array_keys($arg);
             $sql="INSERT INTO $this->table (`".join("`,`",$keys)."`) VALUES('".join("','",$arg)."');";
         }
-       echo $sql;
+    echo $sql;
         return $this->pdo->exec($sql);
     }
 
@@ -116,7 +116,7 @@ function to($url){
     header("location:$url");
 }
 
- /* 建立mql表單後寫入db*/
+
 $Title=new DB('title');
 $Ad=new DB('ad');
 $Mvim=new DB('mvim');
@@ -126,11 +126,3 @@ $Admin=new DB('admin');
 $Menu=new DB('menu');
 $Total=new DB('total');
 $Bottom=new DB('bottom');
-
-?>
-
-
-<!-- 100多行先打需要的建立起來 以利後續使用 -->
-<!-- "mysql:host=localhost;charset=utf8;dbname=db21"  這一段都是固定要加上-->
-<!-- 最後確認是否有全部的functiom 全部的東西 、 、增 、改 、刪 、查 、通用的(即使不是這個資料表的也可以使用)-->
-<!-- if...else  如果他是那就做  要自己判斷 -->

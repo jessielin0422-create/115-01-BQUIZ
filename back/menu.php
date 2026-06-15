@@ -1,3 +1,4 @@
+
 <div class="di"
     style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
     <!--正中央-->
@@ -27,33 +28,30 @@
                         <td width="10%">刪除</td>
                         <td width="10%"></td>
                     </tr>
-                    <?php
-                    $db = ${ucfirst($do)};
-                    $row = $db->all(['main_id' => 0]);
-                    foreach ($row as $row):
+                    <?php 
+                    $db=${ucfirst($do)};
+                    $rows=$db->all(['main_id'=>0]);
+                    foreach($rows as $row):
                     ?>
-
-                        <tr>
-                            <td>
-                                <input type="text" name="text[]" value="<?= $row['text']; ?>" style="width:95%">
-                            </td>
-                            <td>
-                                <input type="text" name="href[]" value="<?= $row['href']; ?>">
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <input type="checkbox" name="sh[]" value="<?= $$row['id']; ?>" <?=($row['sh']==1)?'checked':''; ?> >
-                            </td>
-                             <td>
-                                <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
-                            </td>
-                            <td>
-                                <input type="button" value="編輯次選單" onclick="op('#cover','#cvr','include/submenu.php?id=<?= $row['id'];?>')">                                                              
-                            </td>
-
-                            <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
-                        </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="text[]" value="<?= $row['text']; ?>" style="width:95%">
+                        </td>
+                        <td>
+                            <input type="text" name="href[]" value="<?= $row['href']; ?>">
+                        </td>
+                        <td><?= $Menu->count(['main_id'=>$row['id']]); ?></td>
+                        <td>
+                            <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>"  <?= ($row['sh']==1)?'checked':''; ?> >
+                        </td>                        
+                        <td>
+                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                        </td>
+                        <td>
+                            <input type="button" value="編輯次選單"  onclick="op('#cover','#cvr','include/submenu.php?id=<?= $row['id'];?>')">
+                        </td>
+                        <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+                    </tr>
                     <?php
                     endforeach;
                     ?>

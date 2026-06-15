@@ -8,14 +8,12 @@
         </tr>
         <tr>
             <td class="tt">密碼：</td>
-            <td><input type="text" name="pw"></td>
+            <td><input type="password" name="pw"></td>
         </tr>
         <tr>
             <td class="tt">確認密碼：</td>
-            <td><input type="text" name="pw2"></td>
+            <td><input type="password" name="pw2"></td>
         </tr>
     </table>
-    <div class="cent"><input type="submit" value="新增">
-    <input type="reset" value="重置">
-</div>
+    <div class="cent"><input type="submit" value="新增"><input type="reset" value="重置"></div>
     </form>
