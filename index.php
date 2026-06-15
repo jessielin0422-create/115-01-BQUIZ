@@ -1,4 +1,4 @@
-<?php include_once "api/db.php";?>
+<?php include_once "api/db.php"; ?>
 <!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
@@ -23,8 +23,8 @@
      </div>
      <iframe style="display:none;" name="back" id="back"></iframe>
      <div id="main">
-          <?php $title=$Title->find(['sh'=>1]); ?>
-          <a title="<?=  $title['text']; ?>" href="index.php">
+          <?php $title = $Title->find(['sh' => 1]); ?>
+          <a title="<?= $title['text']; ?>" href="index.php">
                <div class="ti" style="background:url(&#39;upload/<?= $title['img']; ?>&#39;); background-size:cover;">
                </div>
                <!--標題-->
@@ -44,36 +44,36 @@
                <!-- 三個頁面需要有判斷 才知道要載入哪一個畫面-->
                <!-- 如果都沒有的話 畫面會壞掉 所以設定首頁 -->
                <?php
-			
-               //$do=(!empty($_GET['do']))?$_GET['do']:"main";
-			//$do=(!isset($_GET['do']))?$_GET['do']:"main";  只限這裡判斷 用??取代
 
-			$do=$_GET['do']??"main";
-			$file="front/$do.php";
-			if(file_exists($file)){
-				include $file;
-			}else{
-				include "front/main.php";
-			}
+               //$do=(!empty($_GET['do']))?$_GET['do']:"main";
+               //$do=(!isset($_GET['do']))?$_GET['do']:"main";  只限這裡判斷 用??取代
+
+               $do = $_GET['do'] ?? "main";
+               $file = "front/$do.php";
+               if (file_exists($file)) {
+                    include $file;
+               } else {
+                    include "front/main.php";
+               }
                ?>
 
                <div id="alt"
                     style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
                </div>
                <script>
-               $(".sswww").hover(
-                    function() {
-                         $("#alt").html("" + $(this).children(".all").html() + "").css({
-                              "top": $(this).offset().top - 50
-                         })
-                         $("#alt").show()
-                    }
-               )
-               $(".sswww").mouseout(
-                    function() {
-                         $("#alt").hide()
-                    }
-               )
+                    $(".sswww").hover(
+                         function() {
+                              $("#alt").html("" + $(this).children(".all").html() + "").css({
+                                   "top": $(this).offset().top - 50
+                              })
+                              $("#alt").show()
+                         }
+                    )
+                    $(".sswww").mouseout(
+                         function() {
+                              $("#alt").hide()
+                         }
+                    )
                </script>
                <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                     <!--右邊-->
@@ -82,24 +82,24 @@
                     <div style="width:89%; height:480px;" class="dbor">
                          <span class="t botli">校園映象區</span>
                          <script>
-                         var nowpage = 0,
-                              num = 0;
+                              var nowpage = 0,
+                                   num = 0;
 
-                         function pp(x) {
-                              var s, t;
-                              if (x == 1 && nowpage - 1 >= 0) {
-                                   nowpage--;
+                              function pp(x) {
+                                   var s, t;
+                                   if (x == 1 && nowpage - 1 >= 0) {
+                                        nowpage--;
+                                   }
+                                   if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+                                        nowpage++;
+                                   }
+                                   $(".im").hide()
+                                   for (s = 0; s <= 2; s++) {
+                                        t = s * 1 + nowpage * 1;
+                                        $("#ssaa" + t).show()
+                                   }
                               }
-                              if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
-                                   nowpage++;
-                              }
-                              $(".im").hide()
-                              for (s = 0; s <= 2; s++) {
-                                   t = s * 1 + nowpage * 1;
-                                   $("#ssaa" + t).show()
-                              }
-                         }
-                         pp(1)
+                              pp(1)
                          </script>
                     </div>
                </div>
