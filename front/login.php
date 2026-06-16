@@ -1,4 +1,20 @@
-                <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
+               <?php
+			if(isset($_POST['acc'])){
+				if($_POST['acc']=='admin' && $_POST['pw']=='1234'){
+					$_SESSION['login']=1;
+					to("admin.php");
+				}else{
+					echo "<script>";
+					echo "alert('帳號或密碼錯誤')";
+					echo "</script>";
+				}
+			}
+			
+			?>
+			
+			
+			
+			<div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
                 	<?php include "include/marquee.php"; ?>
                 	<div style="height:32px; display:block;"></div>
                 	<!--正中央-->
